@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import numpy 
 from typing import List, Union, Tuple
 
 def mean(data: List[Union[int, float]]) -> Union[int, float]:

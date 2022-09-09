@@ -1,7 +1,8 @@
+#!/usr/bin/env python3
+
 import unittest
 
 import numpy as np
-import taichi as ti
 
 import os
 import sys
@@ -12,8 +13,6 @@ if dir_[-1] == 'test':
 
 from wafflephi import average
 
-ti.init() # speeds up for loops
-
 def _mean(arr: list) -> float:
   return sum(arr)/len(arr) 
 
@@ -21,7 +20,6 @@ class TestAverages(unittest.TestCase):
   def test_mean(self):
     self.assertEqual(average.mean([4,36,45,50,75]), 42)
 
-  @ti.data_oriented
   def test_ema(self):
     for i in range(100, 10000, 100):
       x = np.arange(-i, i)
