@@ -40,4 +40,4 @@ class TestStandardDeviation(unittest.TestCase):
       sample_data = np.random.uniform(-1, 0, 1000)
       numpy_res = np.std(sample_data)
       my_res = statistics.stdev(sample_data)
-      self.assertEqual(round(numpy_res, ROUND), round(my_res, ROUND)) # round to 5th decimal point
+      self.assertEqual(round(numpy_res, ROUND), round(my_res, ROUND)) 
