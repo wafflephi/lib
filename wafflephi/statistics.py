@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from typing import List, Union
+from typing import List, Union, Tuple
 
 def mean(data: List[Union[int, float]]) -> Union[int, float]:
   return sum(data)/len(data)
