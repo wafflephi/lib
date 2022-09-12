@@ -16,7 +16,7 @@ def stdev(sample: List[Union[int, float]]) -> float:
   return (acc/len(sample))**0.5
 
 class LinearRegression:
-  def lstsq(self, X:List[float], Y:List[float]) -> Tuple[list, float, float]:
+  def lstsq(X:List[float], Y:List[float]) -> Tuple[list, float, float]:
     """Least squares method.
       Reference https://en.wikipedia.org/wiki/Least_squares
     """
