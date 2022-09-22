@@ -10,12 +10,16 @@ pip3 install -e .
 
 ## Examples
 
+### Standard deviation
+
 ```python
 from wafflephi.statistics import stdev
 
 data = [1.5, 3.8, 6.7, 9, 11.2, 13.6, 16]
 stdev(data) # 4.83106444517866
 ```
+
+### Least squares linear regression
 
 ```python
 from wafflephi.statistics import LinearRegression
