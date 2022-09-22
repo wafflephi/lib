@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import numpy 
 from typing import List, Union, Tuple
 
 def mean(data: List[Union[int, float]]) -> Union[int, float]:
@@ -16,17 +15,17 @@ def stdev(sample: List[Union[int, float]]) -> float:
   return (acc/len(sample))**0.5
 
 class LinearRegression:
-  def lstsq(X:List[float], Y:List[float]) -> Tuple[list, float, float]:
+  def lstsq(X:List[float], Y:List[float]=None) -> Tuple[list, float, float]:
     """Least squares method.
       Reference https://en.wikipedia.org/wiki/Least_squares
     """
 
+    if Y is None:
+      Y = list(range(len(X)))
+
     assert len(X) == len(Y)
 
     N = len(X)
-
-    X_mean = mean(X)
-    Y_mean = mean(Y)
 
     X_sigma = sum(X)
     Y_sigma = sum(Y)
