@@ -15,13 +15,13 @@ def stdev(sample: List[Union[int, float]]) -> float:
   return (acc/len(sample))**0.5
 
 class LinearRegression:
-  def lstsq(X:List[float], Y:List[float]=None) -> Tuple[list, float, float]:
+  def lstsq(Y:List[float], X:List[float]=None) -> Tuple[list, float, float]:
     """Least squares method.
       Reference https://en.wikipedia.org/wiki/Least_squares
     """
 
-    if Y is None:
-      Y = list(range(len(X)))
+    if X is None:
+      X = list(range(len(Y)))
 
     assert len(X) == len(Y)
 
