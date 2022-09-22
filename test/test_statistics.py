@@ -41,14 +41,14 @@ class TestStandardDeviation(unittest.TestCase):
       sample_data = np.random.uniform(-1, 0, 1000)
       numpy_res = np.std(sample_data)
       my_res = statistics.stdev(sample_data)
-      self.assertEqual(round(numpy_res, ROUND), round(my_res, ROUND)) 
+      self.assertEqual(round(numpy_res, ROUND), round(my_res, ROUND))
 
 
 class TestLinearRegression(unittest.TestCase):
   def test_example(self):
     X = range(1,8)
     Y = [1.5, 3.8, 6.7, 9, 11.2, 13.6, 16]
-    est, slope, y_int = statistics.LinearRegression.lstsq(X,Y) 
+    est, slope, y_int = statistics.LinearRegression.lstsq(Y,X)
     self.assertEqual(round(slope, 9), 2.414285714)
     self.assertEqual(round(y_int, 9), -0.828571429)
 
@@ -56,9 +56,21 @@ class TestLinearRegression(unittest.TestCase):
     X = range(1,8)
     Y = [1.5, 3.8, 6.7, 9, 11.2, 13.6, 16]
 
-    _, slope, y_int = statistics.LinearRegression.lstsq(X,Y) 
+    _, slope, y_int = statistics.LinearRegression.lstsq(Y,X)
 
-    res_scipy = scipy.stats.linregress(X, Y)
+    res_scipy = scipy.stats.linregress(X,Y)
+    res_slope = res_scipy.slope
+    res_yint = res_scipy.intercept
+
+    self.assertEqual(round(slope, ROUND), round(res_slope, ROUND))
+    self.assertEqual(round(y_int, ROUND), round(res_yint, ROUND))
+
+  def test_cmp_scipy_no_y(self):
+    Y = [1.5, 3.8, 6.7, 9, 11.2, 13.6, 16]
+
+    _, slope, y_int = statistics.LinearRegression.lstsq(Y)
+
+    res_scipy = scipy.stats.linregress(range(len(Y)), Y)
     res_slope = res_scipy.slope
     res_yint = res_scipy.intercept
 
@@ -70,14 +82,11 @@ class TestLinearRegression(unittest.TestCase):
       X = range(i)
       Y = np.random.uniform(-100, 100, i)
 
-      _, slope, y_int = statistics.LinearRegression.lstsq(X,Y) 
+      _, slope, y_int = statistics.LinearRegression.lstsq(Y,X)
 
-      res_scipy = scipy.stats.linregress(X, Y)
+      res_scipy = scipy.stats.linregress(X,Y)
       res_slope = res_scipy.slope
       res_yint = res_scipy.intercept
 
       self.assertEqual(round(slope, ROUND-5), round(res_slope, ROUND-5))
       self.assertEqual(round(y_int, ROUND-5), round(res_yint, ROUND-5))
-
-
-

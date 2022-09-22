@@ -14,7 +14,7 @@ if dir_[-1] == 'test':
 from wafflephi import average
 
 def _mean(arr: list) -> float:
-  return sum(arr)/len(arr) 
+  return sum(arr)/len(arr)
 
 class TestAverages(unittest.TestCase):
   def test_mean(self):
@@ -29,4 +29,3 @@ class TestAverages(unittest.TestCase):
 
 if __name__ == "__main__":
   unittest.main()
-
