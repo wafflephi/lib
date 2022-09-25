@@ -16,7 +16,7 @@ if dir_[-1] == 'test':
 from wafflephi import parse
 
 lines = \
-"""Header1,Header2
+"""Header1,Header2,Header4
 value1,value2
 value3,value4"""
 
@@ -26,7 +26,6 @@ def mock_csv() -> str:
     file.write(lines)
 
   return fp
-
 
 fp = mock_csv()
 
@@ -42,7 +41,8 @@ class TestParse(unittest.TestCase):
     with self.assertRaises(ValueError):
       parse.extract_col(fp, 'Header3')
 
-
+  def test_non_existant_values(self):
+    self.assertEqual(parse.extract_col(fp, 'Header4'), [None, None])
 
 if __name__ == "__main__":
   unittest.main()

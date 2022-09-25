@@ -22,8 +22,8 @@ def extract_col(fp: str, col: str, nums:bool=False) -> list:
 
   ret = []
   for line in lines[1::]:
-    if not nums:
-      ret.append(line[column_index])
-    else:
-      ret.append(float(line[column_index]))
+    try:
+      ret.append(float(line[column_index]) if nums else line[column_index])
+    except IndexError:
+      ret.append(None)
   return ret
