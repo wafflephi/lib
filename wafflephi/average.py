@@ -7,10 +7,10 @@ def mean(numbers:List[float]) -> float:
 
 def ema(data:List[float], period:int, smoothing:int=2) -> float:
   """Calculate an Exponential Moving Average.
-  
-  :param data: Input data sample 
+
+  :param data: Input data sample
   :type data: List[float]
-  :param period: Period of days 
+  :param period: Period of days
   :type period: int
   :param smoothing: Smoothing factor
   :default smoothing: 2
