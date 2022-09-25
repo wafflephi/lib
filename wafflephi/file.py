@@ -18,4 +18,3 @@ def fetch(url: str) -> str:
       data = requests.get(url).content
       file.write(data)
   return fp
-
