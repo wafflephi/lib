@@ -13,8 +13,8 @@ if dir_[-1] == 'test':
 
 from wafflephi import statistics
 
-# accurate up to 13th decimal point
-ROUND = 13
+# accurate up to 12th decimal point
+ROUND = 12
 
 class TestMean(unittest.TestCase):
   def test_basic(self):
