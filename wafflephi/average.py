@@ -20,7 +20,6 @@ def ema(data:List[float], period:int, smoothing:int=2) -> float:
   :rtype: float
   """
 
-
   ret = [sum(data[:period]) / period]
   for x in data[period:]:
     ret.append((x * (smoothing / (1 + period))) + ret[-1] * (1 - (smoothing / (1+period))))
