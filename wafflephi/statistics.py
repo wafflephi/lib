@@ -15,36 +15,25 @@ def stdev(sample: List[Union[int, float]]) -> float:
   return (acc/len(sample))**0.5
 
 class LinearRegression:
-  def lstsq(Y:List[float], X:List[float]=None) -> Tuple[list, float, float]:
+  def lstsq(X:List[float], Y:List[float]=None) -> Tuple[list, float, float]:
     """Least squares method.
       Reference https://en.wikipedia.org/wiki/Least_squares
     """
 
-    if X is None:
-      X = list(range(len(Y)))
-
     assert len(X) == len(Y)
-
-    N = len(X)
-
-    X_sigma = sum(X)
-    Y_sigma = sum(Y)
-
     XY_sigma = 0
     X_squared_sigma = 0
-
-    for x, y in zip(X,Y):
+    for x,y in zip(X,Y):
       XY_sigma += x*y
       X_squared_sigma += x**2
+    slope = ((len(X) * XY_sigma) - (sum(X) * sum(Y))) / ((len(X) * X_squared_sigma) - (sum(X))**2)
+    y_intercept = (sum(Y) - slope * sum(X)) / len(X)
+    slope_intercept = lambda x: (slope * x) + y_intercept
+    estimates = []
+    for x,y in zip(X,Y):
+      estimation_y = slope_intercept(x)
+      estimates.append(estimation_y)
+    return estimates, slope, y_intercept
 
-    slope = ((N * XY_sigma) - (X_sigma  * Y_sigma)) / ((N * X_squared_sigma) - (X_sigma)**2)
-    y_intercept = (Y_sigma - slope * X_sigma) / N
-
-    slope_intercept = lambda X: (slope * x) + y_intercept
-
-    est = []
-    for x, _ in zip(X,Y):
-      y = slope_intercept(x)
-      est.append(y)
-
-    return est, slope, y_intercept
+if __name__ == "__main__":
+  print(stdev([1.5, 2.5, 2.5, 2.75, 3.25, 4.75]))

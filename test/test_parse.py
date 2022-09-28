@@ -2,12 +2,7 @@
 
 import os
 import sys
-import csv
-import shutil
-import tempfile
 import unittest
-from io import StringIO
-
 
 dir_ = os.getcwd().split('/')
 if dir_[-1] == 'test':
@@ -24,7 +19,6 @@ def mock_csv() -> str:
   fp = os.path.join('/tmp', 'wafflephi-test')
   with open(fp, 'w') as file:
     file.write(lines)
-
   return fp
 
 fp = mock_csv()

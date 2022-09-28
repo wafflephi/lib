@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 
 import unittest
-
 import numpy as np
-
 import os
 import sys
 
