@@ -48,7 +48,9 @@ class TestLinearRegression(unittest.TestCase):
   def test_example(self):
     X = range(1,8)
     Y = [1.5, 3.8, 6.7, 9, 11.2, 13.6, 16]
-    est, slope, y_int = statistics.LinearRegression.lstsq(X,Y)
+    l = statistics.linreg(X,Y)
+    slope = l.slope
+    y_int = l.y_intercept
     self.assertEqual(round(slope, 9), 2.414285714)
     self.assertEqual(round(y_int, 9), -0.828571429)
 
@@ -56,7 +58,9 @@ class TestLinearRegression(unittest.TestCase):
     X = range(1,8)
     Y = [1.5, 3.8, 6.7, 9, 11.2, 13.6, 16]
 
-    _, slope, y_int = statistics.LinearRegression.lstsq(X,Y)
+    l = statistics.linreg(X,Y)
+    slope = l.slope
+    y_int = l.y_intercept
 
     res_scipy = scipy.stats.linregress(X,Y)
     res_slope = res_scipy.slope
@@ -69,14 +73,16 @@ class TestLinearRegression(unittest.TestCase):
     Y = [1.5, 3.8, 6.7, 9, 11.2, 13.6, 16]
 
     with self.assertRaises(TypeError):
-      _, slope, y_int = statistics.LinearRegression.lstsq(Y)
+      l = statistics.linreg(Y)
 
   def test_random(self):
     for i in range(10, 1000):
       X = range(i)
       Y = np.random.uniform(-100, 100, i)
 
-      _, slope, y_int = statistics.LinearRegression.lstsq(X,Y)
+      l = statistics.linreg(X,Y)
+      slope = l.slope
+      y_int = l.y_intercept
 
       res_scipy = scipy.stats.linregress(X,Y)
       res_slope = res_scipy.slope
