@@ -35,11 +35,7 @@ def linreg(X:List[float], Y:List[float]) -> Tuple[list, float, float]:
     X_squared_sigma += x**2
   slope = ((len(X) * XY_sigma) - (sum(X) * sum(Y))) / ((len(X) * X_squared_sigma) - (sum(X))**2)
   y_intercept = (sum(Y) - slope * sum(X)) / len(X)
-  slope_intercept = lambda x: (slope * x) + y_intercept
-  estimates = []
-  for x,y in zip(X,Y):
-    estimation_y = slope_intercept(x)
-    estimates.append(estimation_y)
+
   return LinearRegression(slope, y_intercept)
 
 def fit(linreg: "LinearRegression", data):
