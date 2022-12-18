@@ -19,7 +19,7 @@ setup(name='wafflephi',
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License"
       ],
-      install_requires=['numpy', 'requests', 'scipy', 'pandas'],
+      install_requires=['numpy', 'requests', 'scipy', 'pandas', 'matplotlib', 'tensorflow', 'seaborn'],
       python_requires='>=3.10',
       extras_require={
         'testing': [
