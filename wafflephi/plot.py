@@ -2,6 +2,7 @@
 
 import pandas as pd
 import numpy as np
+import seaborn as sns
 import matplotlib
 import matplotlib.pyplot as plt
 from typing import Optional, List, Union, Iterable
@@ -53,7 +54,7 @@ def plot_speard(df: pd.DataFrame) -> None:
   ax = sns.violin(x='Column', y='Normalized', data=std)
   _ = ax.set_xticklabels(df.keys(), rotation=90)
 
-def plot_wieght(df: pd.DataFrame, conv_model: tf.keras.Model) -> None:
+def plot_wieght(df: pd.DataFrame, conv_model: "tf.keras.Model") -> None:
   train_df, val_df, test_df, train_mean, train_std = split_and_normalize(df)
   plt.bar(x = range(len(train_df.columns)), height=conv_model.layers[0].kernel[:,0].numpy())
   ax = plt.gca()

@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 
-import tensorflow as tf
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 def extract_col(fp: str, col: str, nums:bool=False) -> list:
   """Extract a column from csv file as a python list.
