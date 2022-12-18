@@ -39,7 +39,7 @@ def trend(df: pd.DataFrame, label:Optional[str]=None, stdev:Optional[bool]=True)
 
   return fig
 
-def plot_data(df: pd.DataFrame, date_time: pd.dat) -> None:
+def plot_data(df: pd.DataFrame, date_time) -> None:
   plot_cols = ['Close',"SMA_8","SMA_20", 'SMA_Ratio_MA','RSI_MA']
   features = df[plot_cols]
 
