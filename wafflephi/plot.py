@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from typing import Optional, List, Union, Iterable
 
 from wafflephi.statistics import linreg, fit
+from wafflephi.parse import split_and_normalize
 
 def trend(df: pd.DataFrame, label:Optional[str]=None, stdev:Optional[bool]=True) -> matplotlib.figure.Figure:
   Y = np.log10(df['Close'])

@@ -36,13 +36,13 @@ def extract_col(fp: str, col: str, nums:bool=False) -> list:
 
 def split_and_normalize(
                       df: pd.DataFrame
-                      ) -> tuple(
+                      ) -> tuple[
                         pd.DataFrame,
                         pd.DataFrame,
                         pd.DataFrame,
                         pd.Series,
                         pd.Series,
-                      ):
+                      ]:
 
   #column_indicies = {name: i for i, name in enumerate(df.columns)}
 
@@ -65,13 +65,13 @@ def split_and_normalize(
 
 
 def split_and_normalize_static(df: pd.DataFrame, starting_point: int = 0
-                              ) -> tuple(
+                              ) -> tuple[
                                 pd.DataFrame,
                                 pd.DataFrame,
                                 pd.DataFrame,
                                 pd.Series,
                                 pd.Series,
-                              ):
+                              ]:
 
   columns = {name: i for i, name in enumerate(df.columns)}
   train = pd.DataFrame(columns=columns)
