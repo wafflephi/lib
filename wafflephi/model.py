@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-import window
+from wafflephi import window
 
 def compile_and_fit(model: tf.keras.Model, window: "window.WindowGenerator", patience: int = 5, epochs: int = 300) -> tf.keras.callbacks.History:
   early_stopping = tf.keras.callbacks.EarlyStopping(
