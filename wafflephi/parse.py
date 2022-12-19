@@ -84,3 +84,6 @@ def normalize(df: pd.DataFrame) -> pd.DataFrame:
     train_std = df.std()
     train_df = (df - train_mean) / train_std
     return train_df
+
+def reverse_normalization(output, mean, std):
+    return (output * std) + mean
