@@ -5,7 +5,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib
 import matplotlib.pyplot as plt
-from typing import Optional, List, Union, Iterable
+from typing import Optional
 
 from wafflephi.statistics import linreg, fit
 from wafflephi.parse import split_and_normalize

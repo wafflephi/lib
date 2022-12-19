@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 
-from typing import List, Union, Tuple
 
-
-def mean(data: List[Union[int, float]]) -> Union[int, float]:
+def mean(data: list[int | float]) -> int | float:
     return sum(data) / len(data)
 
 
-def stdev(sample: List[Union[int, float]]) -> float:
+def stdev(sample: list[int | float]) -> float:
     """Calculate standard deviation from sample data."""
     mean_ = mean(sample)
     acc = 0
@@ -25,7 +23,7 @@ class LinearRegression:
         return f"LinearRegression(slope={self.slope}, y_intercept={self.y_intercept})"
 
 
-def linreg(X: List[float], Y: List[float]) -> Tuple[list, float, float]:
+def linreg(X: list[float], Y: list[float]) -> tuple[list, float, float]:
     """Least squares method.
     Reference https://en.wikipedia.org/wiki/Least_squares
     """

@@ -12,7 +12,6 @@ def ema(data: list[float], period: int, smoothing: int = 2) -> float:
         )
     return ret
 
-
 if __name__ == "__main__":
     import numpy as np
 

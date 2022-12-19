@@ -2,7 +2,6 @@ import tensorflow as tf
 
 from wafflephi import window
 
-
 def compile_and_fit(
     model: tf.keras.Model,
     window: "window.WindowGenerator",

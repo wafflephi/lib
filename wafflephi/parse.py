@@ -2,7 +2,6 @@
 
 import pandas as pd
 
-
 def extract_col(fp: str, col: str, nums: bool = False) -> list:
     lines = [line.split(",") for line in open(fp, "r").read().strip().split("\n")]
     headers = lines[0]
