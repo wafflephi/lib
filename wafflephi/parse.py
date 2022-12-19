@@ -2,20 +2,7 @@
 
 import pandas as pd
 
-
 def extract_col(fp: str, col: str, nums: bool = False) -> list:
-    """Extract a column from csv file as a python list.
-
-    :param fp: path to a csv file.
-    :type fp: string
-    :param col: column header
-    :type col: string
-    :param nums: if True format column contents as a floats
-    :type nums: float
-    :return: extracted column
-    :rtype: list
-    """
-
     lines = [line.split(",") for line in open(fp, "r").read().strip().split("\n")]
     headers = lines[0]
     try:
@@ -92,7 +79,7 @@ def split_and_normalize_static(
     return train_df, val_df, test_df, train_mean, train_std, num_features
 
 
-def normalize(df: pd.DataFrame):
+def normalize(df: pd.DataFrame) -> pd.DataFrame:
     train_mean = df.mean()
     train_std = df.std()
     train_df = (df - train_mean) / train_std
