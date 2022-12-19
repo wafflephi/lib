@@ -2,12 +2,13 @@ import tensorflow as tf
 
 from wafflephi import window
 
+
 def compile_and_fit(
     model: tf.keras.Model,
     window: "window.WindowGenerator",
     patience: int = 5,
     epochs: int = 20,
-    ) -> tf.keras.callbacks.History:
+) -> tf.keras.callbacks.History:
     early_stopping = tf.keras.callbacks.EarlyStopping(
         monitor="val_loss", patience=patience, mode="min"
     )

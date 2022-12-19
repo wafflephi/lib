@@ -5,23 +5,25 @@ import requests
 from hashlib import md5
 from datetime import date, timedelta
 
-def fetch(url: str) -> str:
-  """Download a file from a given url, and save in /tmp/ directory.
-    Returns file path.
-  """
-  fp = os.path.join('/tmp', md5(url.encode('utf-8')).hexdigest())
 
-  if os.path.isfile(fp):
-    with open(fp ,'rb') as file:
-      data = file.read()
-  else:
-    with open(fp, 'wb') as file:
-      data = requests.get(url).content
-      file.write(data)
-  return fp
+def fetch(url: str) -> str:
+    """Download a file from a given url, and save in /tmp/ directory.
+    Returns file path.
+    """
+    fp = os.path.join("/tmp", md5(url.encode("utf-8")).hexdigest())
+
+    if os.path.isfile(fp):
+        with open(fp, "rb") as file:
+            data = file.read()
+    else:
+        with open(fp, "wb") as file:
+            data = requests.get(url).content
+            file.write(data)
+    return fp
+
 
 def set_url(ticker: str, interval: str, years_of_data: int = 10) -> str:
-  """Set url for stooq.com csv download.
+    """Set url for stooq.com csv download.
     Example  URLs:
       Data for S&P 500 since 1789 monthly.
       https://stooq.com/q/d/l/?s=^spx&i=m
@@ -45,22 +47,23 @@ def set_url(ticker: str, interval: str, years_of_data: int = 10) -> str:
     :type start_date: string | None
     :return: URL to the data download, examples above.
     :rtype: string
-  """
+    """
 
-  today = date.today()
-  begin_date = (today - timedelta(days=years_of_data*365)).strftime('%Y%m%d')
-  end_date = today.strftime('%Y%m%d')
-  if years_of_data is None:
-    # all possible data
-    url = f'https://stooq.com/q/d/l/?s={ticker}&i={interval}'
-  else:
-    url = f'https://stooq.com/q/d/l/?s={ticker}&d1={begin_date}&d2={end_date}&i={interval}'
-  return url
+    today = date.today()
+    begin_date = (today - timedelta(days=years_of_data * 365)).strftime("%Y%m%d")
+    end_date = today.strftime("%Y%m%d")
+    if years_of_data is None:
+        # all possible data
+        url = f"https://stooq.com/q/d/l/?s={ticker}&i={interval}"
+    else:
+        url = f"https://stooq.com/q/d/l/?s={ticker}&d1={begin_date}&d2={end_date}&i={interval}"
+    return url
+
 
 if __name__ == "__main__":
-  ticker = "USDPLN"
-  interval = "m"
-  period = 20
-  url = set_url(ticker, interval, period)
-  usdpln_fp = fetch(url)
-  print(url, usdpln_fp)
+    ticker = "USDPLN"
+    interval = "m"
+    period = 20
+    url = set_url(ticker, interval, period)
+    usdpln_fp = fetch(url)
+    print(url, usdpln_fp)
